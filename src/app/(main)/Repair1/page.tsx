@@ -38,12 +38,12 @@ export default function Home() {
         style={{ backgroundImage: "url('/assets/images/mainbg.png')" }}
       >
         <Title title="Repair 1: System" />
-        <div className="flex mt-6">
-          <div className="w-3/4 overflow-x-auto">
+        <div className="flex flex-col lg:flex-row mt-6 gap-4">
+          <div className="lg:w-3/4 w-full overflow-x-auto bg-white p-4 rounded-lg shadow-lg">
             {data.length > 0 ? <Table data={data} /> : <p>Loading...</p>}
           </div>
-          <div className="w-1/4 flex justify-center items-center">
-            <Chart title="" data={chartData} />
+          <div className="lg:w-1/4 w-full flex justify-center items-center bg-white p-4 rounded-lg shadow-lg">
+            <Chart title="Failure Breakdown" data={chartData} />
           </div>
         </div>
       </div>
