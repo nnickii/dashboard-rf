@@ -1,0 +1,94 @@
+[
+    {
+        "No": "Model 1",
+        "Final Assembly Line Scan Count": 1,
+        "Welding Quantity": 2,
+        "Number of Passes in Random Sampling": 3,
+        "Number of Passes in Injection": 2,
+        "ystem Process Offline Quantity": 2,
+        "Defective Quantity": 2
+
+
+    },
+    {
+        "No": "Model 2",
+        "Final Assembly Line Scan Count": 1,
+        "Welding Quantity": 2,
+        "Number of Passes in Random Sampling": 3,
+        "Number of Passes in Injection": 2,
+        "ystem Process Offline Quantity": 2,
+        "Defective Quantity": 2
+    },
+    {
+        "No": "Model 3",
+       "Final Assembly Line Scan Count": 1,
+        "Welding Quantity": 2,
+        "Number of Passes in Random Sampling": 3,
+        "Number of Passes in Injection": 2,
+        "ystem Process Offline Quantity": 2,
+        "Defective Quantity": 2
+    },
+    {
+        "No": "Model 4",
+      "Final Assembly Line Scan Count": 1,
+        "Welding Quantity": 2,
+        "Number of Passes in Random Sampling": 3,
+        "Number of Passes in Injection": 2,
+        "ystem Process Offline Quantity": 2,
+        "Defective Quantity": 2
+    },
+    {
+        "No": "Model 5",
+        "Final Assembly Line Scan Count": 1,
+        "Welding Quantity": 2,
+        "Number of Passes in Random Sampling": 3,
+        "Number of Passes in Injection": 2,
+        "ystem Process Offline Quantity": 2,
+        "Defective Quantity": 2
+    },
+    {
+        "No": "Model 6",
+        "Final Assembly Line Scan Count": 1,
+        "Welding Quantity": 2,
+        "Number of Passes in Random Sampling": 3,
+        "Number of Passes in Injection": 2,
+        "ystem Process Offline Quantity": 2,
+        "Defective Quantity": 2
+    },
+    {
+        "No": "Model 7",
+        "Final Assembly Line Scan Count": 1,
+        "Welding Quantity": 2,
+        "Number of Passes in Random Sampling": 3,
+        "Number of Passes in Injection": 2,
+        "ystem Process Offline Quantity": 2,
+        "Defective Quantity": 2
+    },
+    {
+        "No": "Model 8",
+        "Final Assembly Line Scan Count": 1,
+        "Welding Quantity": 2,
+        "Number of Passes in Random Sampling": 3,
+        "Number of Passes in Injection": 2,
+        "ystem Process Offline Quantity": 2,
+        "Defective Quantity": 2
+    },
+    {
+        "No": "Model 9",
+        "Final Assembly Line Scan Count": 1,
+        "Welding Quantity": 2,
+        "Number of Passes in Random Sampling": 3,
+        "Number of Passes in Injection": 2,
+        "ystem Process Offline Quantity": 2,
+        "Defective Quantity": 2
+    },
+    {
+        "No": "Model 10",
+        "Final Assembly Line Scan Count": 1,
+        "Welding Quantity": 2,
+        "Number of Passes in Random Sampling": 3,
+        "Number of Passes in Injection": 2,
+        "ystem Process Offline Quantity": 2,
+        "Defective Quantity": 2
+    }
+]

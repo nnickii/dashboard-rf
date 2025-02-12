@@ -1,0 +1,62 @@
+[
+    {
+        "No": "Model 1",
+        "Same-day Stock Entry": 1,
+        "Delivered from Warehouse": 2,
+        "Actual Inventory": 3
+    },
+    {
+        "No": "Model 2",
+        "Same-day Stock Entry": 22,
+        "Delivered from Warehouse": 5,
+        "Actual Inventory": 8
+    },
+    {
+        "No": "Model 3",
+        "Same-day Stock Entry": 7,
+        "Delivered from Warehouse": 15,
+        "Actual Inventory": 44
+    },
+    {
+        "No": "Model 4",
+        "Same-day Stock Entry": 6,
+        "Delivered from Warehouse": 30,
+        "Actual Inventory": 15
+    },
+    {
+        "No": "Model 5",
+        "Same-day Stock Entry": 9,
+        "Delivered from Warehouse": 3,
+        "Actual Inventory": 25
+    },
+    {
+        "No": "Model 6",
+        "Same-day Stock Entry": 4,
+        "Delivered from Warehouse": 2,
+        "Actual Inventory": 9
+    },
+    {
+        "No": "Model 7",
+        "Same-day Stock Entry": 6,
+        "Delivered from Warehouse": 15,
+        "Actual Inventory": 9
+    },
+    {
+        "No": "Model 8",
+        "Same-day Stock Entry": 7,
+        "Delivered from Warehouse": 6,
+        "Actual Inventory": 8
+    },
+    {
+        "No": "Model 9",
+        "Same-day Stock Entry": 11,
+        "Delivered from Warehouse": 21,
+        "Actual Inventory": 5
+    },
+    {
+        "No": "Model 10",
+        "Same-day Stock Entry": 5,
+        "Delivered from Warehouse": 3,
+        "Actual Inventory":7
+    }
+]
