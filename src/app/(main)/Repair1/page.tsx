@@ -39,15 +39,14 @@ export default function Home() {
       >
         <Title title="Repair 1: System" />
         <div className="flex mt-6">
-          <div className="w-4/5 overflow-x-auto">
+          <div className="w-3/4 overflow-x-auto">
             {data.length > 0 ? <Table data={data} /> : <p>Loading...</p>}
           </div>
-          <div className="w-1/5 flex justify-center items-center">
+          <div className="w-1/4 flex justify-center items-center">
             <Chart title="" data={chartData} />
           </div>
         </div>
       </div>
     </main>
-
   );
 }

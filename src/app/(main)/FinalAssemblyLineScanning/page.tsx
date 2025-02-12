@@ -23,15 +23,17 @@ export default function Home() {
   return (
     <main>
       <div
-        className="p-10 min-h-screen bg-cover bg-center"
+        className="p-4 md:p-10 min-h-screen bg-cover bg-center"
         style={{ backgroundImage: "url('/assets/images/mainbg.png')" }}
       >
         <Title title="Final Assembly Line Scanning: Final Assembly Line Plan, Real-time Monitoring Screen" />
-        <div className="flex mt-6">
-          <div className="w-3/4">
+        <div className="flex flex-col md:flex-row mt-6 gap-4">
+          {/* ตาราง */}
+          <div className="w-full md:w-3/4">
             {data.length > 0 ? <Table data={data} /> : <p>Loading...</p>}
           </div>
-          <div className="w-2/4 flex justify-end items-center">
+          {/* การ์ด */}
+          <div className="w-full md:w-2/5 flex justify-center md:justify-end items-center">
             <Card title="Real-time Final Assembly Line Screen 1F" />
           </div>
         </div>

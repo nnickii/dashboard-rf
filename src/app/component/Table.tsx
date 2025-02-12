@@ -8,24 +8,40 @@ const Table: React.FC<TableProps> = ({ data }) => {
   const headers = data.length > 0 ? Object.keys(data[0]) : [];
 
   return (
-    <table className="border-collapse border w-full text-center">
-      <thead>
-        <tr className="bg-blue-700 text-white">
-          {headers.map((header) => (
-            <th key={header} className="border p-2">{header}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((row, index) => (
-          <tr key={index} className="bg-transparent text-white">
-            {headers.map((header) => (
-              <td key={header} className="border p-2">{row[header]}</td>
+    <div className="w-full overflow-hidden">
+      <table className="border-collapse border w-full table-auto text-center text-xs sm:text-sm md:text-base">
+        <thead>
+          <tr className="bg-blue-700 text-white">
+            {headers.map((header, index) => (
+              <th
+                key={header}
+                className={`border p-1 sm:p-2 ${
+                  index === 0 ? "w-1/6" : "w-1/5"
+                }`} // กำหนดขนาดคอลัมน์
+              >
+                {header}
+              </th>
             ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data.map((row, index) => (
+            <tr key={index} className="bg-transparent text-white">
+              {headers.map((header, colIndex) => (
+                <td
+                  key={header}
+                  className={`border p-1 sm:p-2 ${
+                    colIndex === 0 ? "w-1/6" : "w-1/5"
+                  }`} // กำหนดขนาดคอลัมน์
+                >
+                  {row[header]}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

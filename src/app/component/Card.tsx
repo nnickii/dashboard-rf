@@ -21,9 +21,9 @@ const Card: React.FC<CardProps> = ({ title }) => {
   }, []);
 
   return (
-    <div className="w-[500px] h-[300px] bg-blue-700 text-white flex flex-col items-center justify-center text-center p-4 rounded-lg shadow-lg">
+    <div className="w-[500px] h-[350px] bg-opacity-0: text-white flex flex-col items-center justify-center text-center p-4 rounded-lg shadow-lg">
       <p className="text-lg font-medium">{title}</p>
-      <video ref={videoRef} className="w-full h-[200px] mt-2 rounded-md" 
+      <video ref={videoRef} className="w-full h-[300px] mt-2 rounded-md" 
       controls autoPlay playsInline />
     </div>
   );
