@@ -14,25 +14,35 @@ export default function Home() {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true); 
+    setIsClient(true);
 
     if (tempData.length === 0) return;
 
-    const totalQuantity = tempData.reduce((acc, row) => acc + (Number(row["Defective Quantity"]) || 0), 0);
+    // คำนวณ total row
+    const totalRow: any = { No: "Total" };
+    const keys = Object.keys(tempData[0]).filter(key => key !== "No");
 
-    const chartDataFromTable = tempData.map((row) => {
-      const defectiveQuantity = Number(row["Defective Quantity"]) || 0;
-      const percentage = totalQuantity > 0 ? (defectiveQuantity / totalQuantity) * 100 : 0;
-
-      return {
-        name: row.No.toString(),
-        value: percentage,
-      };
+    keys.forEach(key => {
+      totalRow[key] = tempData.reduce((sum, row) => {
+        if (typeof row[key] === "number") {
+          return sum + (row[key] as number);
+        }
+        return sum;
+      }, 0);
     });
 
-    setChartData(chartDataFromTable);
-    setData(tempData);
-  }, []); 
+    // เตรียมข้อมูลตาราง
+    const tableData = [totalRow, ...tempData];
+    setData(tableData);
+
+    // ใช้ totalRow เป็นข้อมูลของ Chart
+    const chartDataFromTotal = keys.slice(1).map((key) => ({
+      name: key, // ใช้ชื่อ Header ของแต่ละคอลัมน์
+      value: Number(totalRow[key]) || 0, // แสดงค่าผลรวมจริง
+    }));
+
+    setChartData(chartDataFromTotal);
+  }, []);
 
   return (
     <main>
@@ -42,11 +52,11 @@ export default function Home() {
       >
         <Title title="Repair 1: System" />
         <div className="flex flex-col lg:flex-row mt-4 gap-4">
-          <div className="lg:w-4/5 w-full overflow-x-auto p-4 rounded-lg shadow-lg ">
+          <div className="lg:w-4/5 w-full overflow-x-auto p-4 rounded-lg shadow-lg">
             {data.length > 0 ? <Table data={data} /> : <p className="text-gray-500">Loading...</p>}
           </div>
-          <div className="lg:w-1/3 w-full flex justify-center items-center p-0 rounded-lg shadow-lg">
-            {isClient && <Chart title="" data={chartData} />}
+          <div className="lg:w-1/3 w-full flex justify-center items-center p-4 rounded-lg shadow-lg">
+            {isClient && <Chart title="Total Breakdown" data={chartData} />}
           </div>
         </div>
       </div>
