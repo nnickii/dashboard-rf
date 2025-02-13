@@ -10,7 +10,7 @@ const Chart = dynamic(() => import("@/app/component/Chart"), { ssr: false });
 
 export default function Home() {
   const [data, setData] = useState<{ [key: string]: string | number }[]>([]);
-  const [chartData, setChartData] = useState<{ name: string; value: number }[]>([]);
+  const [chartData, setChartData] = useState<{ name: string; value: number; rawValue: number }[]>([]);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function Home() {
 
     const allKeys = Object.keys(tempData[0]);
     const malfunctionKeys = allKeys.filter((key) => key.startsWith("Failure or Malfunction n"));
-
+    // คำนวณ total row
     const totalRow: Record<string, number | string> = { No: "Total" };
     allKeys.forEach((key) => {
       if (key !== "No") {
@@ -33,18 +33,18 @@ export default function Home() {
       }
     });
 
+    setData([totalRow, ...tempData]);
+    const repairQuantity = (totalRow["Repair Quantity"] as number) || 0;
+    const calculatedChartData = malfunctionKeys.map((key) => {
+      const failureCount = totalRow[key] as number || 0;
+      const percentage = repairQuantity > 0 ? (failureCount / repairQuantity) * 100 : 0;
 
-    const tableData = [totalRow, ...tempData];
-    setData(tableData);
-
-
-    const repairQuantity = totalRow["Repair Quantity"] as number || 0;
-    const calculatedChartData = malfunctionKeys.map((key) => ({
-      name: key,
-      value: totalRow[key] && repairQuantity > 0 
-        ? parseFloat(((repairQuantity / (totalRow[key] as number)) * 100).toFixed(2))
-        : 0,
-    }));
+      return {
+        name: key,
+        value: percentage, 
+        rawValue: failureCount, 
+      };
+    });
 
     setChartData(calculatedChartData);
   }, []);
@@ -65,7 +65,6 @@ export default function Home() {
               <Chart
                 title=""
                 data={chartData}
-                tooltipFormatter={(value) => `${value.toFixed(2)}%`} 
               />
             )}
           </div>

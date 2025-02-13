@@ -1,9 +1,10 @@
 import React from "react";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 
+
 interface ChartProps {
   title: string;
-  data: { name: string; value: number }[];
+  data: { name: string; value: number; rawValue: number }[];
 }
 
 const COLORS = [
@@ -11,7 +12,12 @@ const COLORS = [
   "#0096C7", "#2A9D8F", "#E76F51", "#E9C46A", "#6A0572"
 ];
 
-const Chart: React.FC<ChartProps> = ({ title, data }) => {
+  const Chart: React.FC<ChartProps> = ({ title, data }) => {
+  const labelFormatter = (value: number) => `${value.toFixed(2)}%`;
+  const tooltipFormatter = (value: any, name: string, item: any) => {
+    return `${item.payload.rawValue}`;
+  };
+
   return (
     <div className="w-full text-center">
       <h2 className="text-lg font-semibold mb-2">{title}</h2>
@@ -21,7 +27,7 @@ const Chart: React.FC<ChartProps> = ({ title, data }) => {
           cx="50%"
           cy="50%"
           labelLine={false}
-          label={({ percent, x, y }) => (
+          label={({ x, y, value }) => (
             <text
               x={x}
               y={y}
@@ -31,10 +37,10 @@ const Chart: React.FC<ChartProps> = ({ title, data }) => {
               textAnchor="middle"
               dominantBaseline="central"
             >
-              {(percent * 100).toFixed(0)}%
+              {labelFormatter(value)}
             </text>
           )}
-          outerRadius={150} 
+          outerRadius={150}
           fill="#8884d8"
           dataKey="value"
         >
@@ -42,7 +48,7 @@ const Chart: React.FC<ChartProps> = ({ title, data }) => {
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
-        <Tooltip />
+        <Tooltip formatter={tooltipFormatter} />
         <Legend verticalAlign="top" layout="horizontal" align="center" />
       </PieChart>
     </div>
