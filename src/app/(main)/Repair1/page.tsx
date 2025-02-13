@@ -18,30 +18,35 @@ export default function Home() {
 
     if (tempData.length === 0) return;
 
-    // คำนวณ total row
-    const totalRow: any = { No: "Total" };
-    const keys = Object.keys(tempData[0]).filter(key => key !== "No");
+    const allKeys = Object.keys(tempData[0]);
+    const malfunctionKeys = allKeys.filter((key) => key.startsWith("Failure or Malfunction n"));
 
-    keys.forEach(key => {
-      totalRow[key] = tempData.reduce((sum, row) => {
-        if (typeof row[key] === "number") {
-          return sum + (row[key] as number);
-        }
-        return sum;
-      }, 0);
+    const totalRow: Record<string, number | string> = { No: "Total" };
+    allKeys.forEach((key) => {
+      if (key !== "No") {
+        totalRow[key] = tempData.reduce((sum, row) => {
+          if (typeof row[key] === "number") {
+            return sum + row[key];
+          }
+          return sum;
+        }, 0);
+      }
     });
 
-    // เตรียมข้อมูลตาราง
+
     const tableData = [totalRow, ...tempData];
     setData(tableData);
 
-    // ใช้ totalRow เป็นข้อมูลของ Chart
-    const chartDataFromTotal = keys.slice(1).map((key) => ({
-      name: key, // ใช้ชื่อ Header ของแต่ละคอลัมน์
-      value: Number(totalRow[key]) || 0, // แสดงค่าผลรวมจริง
+
+    const repairQuantity = totalRow["Repair Quantity"] as number || 0;
+    const calculatedChartData = malfunctionKeys.map((key) => ({
+      name: key,
+      value: totalRow[key] && repairQuantity > 0 
+        ? parseFloat(((repairQuantity / (totalRow[key] as number)) * 100).toFixed(2))
+        : 0,
     }));
 
-    setChartData(chartDataFromTotal);
+    setChartData(calculatedChartData);
   }, []);
 
   return (
@@ -56,7 +61,13 @@ export default function Home() {
             {data.length > 0 ? <Table data={data} /> : <p className="text-gray-500">Loading...</p>}
           </div>
           <div className="lg:w-1/3 w-full flex justify-center items-center p-4 rounded-lg shadow-lg">
-            {isClient && <Chart title="Total Breakdown" data={chartData} />}
+            {isClient && (
+              <Chart
+                title=""
+                data={chartData}
+                tooltipFormatter={(value) => `${value.toFixed(2)}%`} 
+              />
+            )}
           </div>
         </div>
       </div>
