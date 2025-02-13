@@ -23,7 +23,7 @@ export default function Home() {
     <main>
       <div className="p-10 min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/assets/images/mainbg.png')" }}>
         <Title title="Vacuum, Injection" />
-        <div className="flex mt-6">
+        <div className="flex mt-4">
           <div className="w-full overflow-x-auto">
             {data.length > 0 ? <Table data={data} /> : <p>Loading...</p>}
           </div>
